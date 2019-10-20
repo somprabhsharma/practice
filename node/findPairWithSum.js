@@ -6,7 +6,7 @@
 // Approach1: Brute Force Approach
 // Assumption: none
 // Time Compexity: O(n^2)
-function doesPairExistsWithSum(arr, sum) {
+const doesPairExistsWithSum = (arr, sum) => {
   for (const item1 of arr) {
     for (const item2 of arr) {
       if (item1 + item2 === sum) {
@@ -24,7 +24,7 @@ function doesPairExistsWithSum(arr, sum) {
 // Approach3: Loop from both side and check if the addition of the pair is less than sum, move the left cursor, if the addition is greater than sum then move the right cursor. Go till the cursors have crossed or we have found our pair.
 // Assumption: array is sorted
 // Time Compexity: O(n)
-function doesPairExistsWithSum2(arr, sum) {
+const doesPairExistsWithSum2 = (arr, sum) => {
   let left = 0
   let right = arr.length - 1
   while(left < right) {
@@ -43,14 +43,16 @@ function doesPairExistsWithSum2(arr, sum) {
 // Approach4: Store the complement of the current item in a object, and check at each step if the complement already exists => O(n)
 // Assumption: array is not orted
 // Time Compexity: O(n)
-function doesPairExistsWithSum3(arr, sum) {
+const doesPairExistsWithSum3 = (arr, sum) => {
   const hashSet = {}
   for (const item of arr) {
     const complement = sum - item
     if (hashSet[complement]) {
       return true
     }
-    hashSet[complement] = true
+    hashSet[item] = true
   }
   return false
 }
+
+console.log(doesPairExistsWithSum3([1, 2, 3, 5], 10))
